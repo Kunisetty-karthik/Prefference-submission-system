@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NSS IIT Bombay — Preference Portal</title>
+  <link rel="icon" href="logo.png" />
+  <link rel="stylesheet" href="q2.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="nss-navbar">
+    <div class="nss-brand">
+      <img src="logo.png" alt="NSS Logo" class="nss-logo" />
+      <div class="nss-title-container">
+        <span class="nss-title">NSS, IIT BOMBAY</span>
+        <span class="nss-motto">"Think we not me"</span>
+      </div>
+    </div>
+    <button class="ham" id="hamBtn" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nss-nav-links" id="navLinks">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Events</a></li>
+      <li><a href="#">Departments</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mob-menu" id="mobMenu">
+    <a href="#">Home</a>
+    <a href="#">Events</a>
+    <a href="#">Departments</a>
+    <a href="#">Contact</a>
+  </div>
+
+  <main class="portal-container">
+
+    <!-- HEADER -->
+    <div class="portal-header">
+      <h1>NSS Preference Submission Portal</h1>
+      <p>Please fill in your details and select your department preferences in order (1st to 3rd).</p>
+    </div>
+
+    <!-- FORM CARD -->
+    <section class="form-card">
+      <form id="preferenceForm">
+        <input type="hidden" id="editIndex" value="-1" />
+
+        <div class="form-row">
+          <div class="input-group">
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" placeholder="Enter your full name" required />
+          </div>
+          <div class="input-group">
+            <label for="rollNumber">Roll Number</label>
+            <input type="text" id="rollNumber" placeholder="e.g., 23B1234" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="input-group">
+            <label for="ldapEmail">LDAP Email ID</label>
+            <input type="email" id="ldapEmail" placeholder="rollno@iitb.ac.in" required />
+          </div>
+          <div class="input-group">
+            <label for="personalEmail">Personal Email ID</label>
+            <input type="email" id="personalEmail" placeholder="example@gmail.com" required />
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label for="contactNo">Contact Number</label>
+          <input type="tel" id="contactNo" placeholder="10-digit mobile number" pattern="[0-9]{10}" required />
+        </div>
+
+        <hr class="divider" />
+
+        <div class="preferences-section">
+          <h3>Department Preferences</h3>
+
+          <div class="pref-row">
+            <label for="pref1">1st Preference</label>
+            <select id="pref1" required>
+              <option value="" disabled selected>Select Department</option>
+              <option>Educational Outreach</option>
+              <option>Green Campus</option>
+              <option>Sustainable Social Development</option>
+              <option>Media and Design</option>
+              <option>Web</option>
+            </select>
+          </div>
+
+          <div class="pref-row">
+            <label for="pref2">2nd Preference</label>
+            <select id="pref2" required>
+              <option value="" disabled selected>Select Department</option>
+              <option>Educational Outreach</option>
+              <option>Green Campus</option>
+              <option>Sustainable Social Development</option>
+              <option>Media and Design</option>
+              <option>Web</option>
+            </select>
+          </div>
+
+          <div class="pref-row">
+            <label for="pref3">3rd Preference</label>
+            <select id="pref3" required>
+              <option value="" disabled selected>Select Department</option>
+              <option>Educational Outreach</option>
+              <option>Green Campus</option>
+              <option>Sustainable Social Development</option>
+              <option>Media and Design</option>
+              <option>Web</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="formError" class="form-error"></div>
+
+        <div class="form-btns">
+          <button type="submit" class="submit-btn" id="submitBtn">Submit Preferences</button>
+          <button type="button" class="cancel-btn" id="cancelBtn" style="display:none;" onclick="cancelEdit()">Cancel</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- SUBMISSIONS TABLE -->
+    <section class="submissions-list">
+      <div class="submissions-header">
+        <h3>Submitted Preferences</h3>
+        <button class="clear-btn" onclick="clearAll()">Clear All</button>
+      </div>
+      <div class="table-responsive">
+        <table id="submissionTable">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Roll No</th>
+              <th>1st Pref</th>
+              <th>2nd Pref</th>
+              <th>3rd Pref</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="submissionBody">
+            <tr id="emptyRow">
+              <td colspan="7" class="empty-msg">No submissions yet.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; <span id="yr"></span> NSS, IIT Bombay. All rights reserved.</p>
+  </footer>
+
+  <script src="q2.js"></script>
+</body>
+</html>
